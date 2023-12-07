@@ -5,7 +5,7 @@ import asyncio
 from typing import Optional
 import keyboard
 
-from go_pro_ble import GoPro
+from lib_go_pro.go_pro_ble import GoPro
 
 from typing import List, Dict, Tuple
 

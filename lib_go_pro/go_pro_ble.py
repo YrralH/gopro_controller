@@ -6,8 +6,8 @@ import keyboard
 
 from bleak import BleakClient
 
-from connect import connect_ble
-from logger import GOPRO_BASE_UUID, logger
+from lib_go_pro.connect import connect_ble
+from lib_go_pro.logger import GOPRO_BASE_UUID, logger
 
 from typing import List, Dict, Tuple
 

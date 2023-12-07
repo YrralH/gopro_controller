@@ -10,26 +10,25 @@ import keyboard
 
 from bleak import BleakClient
 
-from connect import connect_ble
-from logger import GOPRO_BASE_UUID, logger
+from lib_go_pro.connect import connect_ble
+from lib_go_pro.logger import GOPRO_BASE_UUID, logger
 
-
-from go_pro_ble import GoPro, try_connect_camera_once
-from batch_options import batch_start_record, batch_stop_record, print_activate_camera_id, batch_set_60FPS, \
+from lib_go_pro.go_pro_ble import GoPro, try_connect_camera_once
+from lib_go_pro.batch_options import batch_start_record, batch_stop_record, print_activate_camera_id, batch_set_60FPS, \
     batch_set_120FPS, batch_set_240FPS, batch_set_1080P, batch_set_2p7K, batch_set_4K, batch_sleep
 
 from typing import List, Dict, Tuple
 
 LIST_CAMERA_ID_AND_VERSION_9 = [
-        '7222-12',
-        '4406-12',
-        '2789-12',
-        '3485-11',
-        '2903-11',
-        '0500-11',
-        '0447-12',
-        '5610-12',
-        '0777-12'
+        '7222-12', #0
+        '4406-12', #1
+        '2789-12', #2 
+        '3485-11', #3
+        '2903-11', #4
+        '0500-11', #5
+        '0447-12', #6
+        '5610-12', #7
+        '0777-12'  #8
     ]
 
 

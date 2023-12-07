@@ -9,7 +9,7 @@ from typing import Dict, Any, List, Callable, Optional
 from bleak import BleakScanner, BleakClient
 from bleak.backends.device import BLEDevice as BleakDevice
 
-from logger import logger
+from lib_go_pro.logger import logger
 
 
 async def connect_ble(
