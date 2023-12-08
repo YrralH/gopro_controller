@@ -232,10 +232,8 @@ class GoPro():
         if not self.Recording:
             logger.info("Setting the video resolution of GoPro11 to 2.7K")
             self.event.clear()
-            await self.client.write_gatt_char(self.SETTING_REQ_UUID, bytearray([0x03, 0x02, 0x01, 0x04]),
-                                              response=True)  # 2.7K
-            await self.client.write_gatt_char(self.SETTING_REQ_UUID, bytearray([0x03, 0x79, 0x01, 0x04]),
-                                              response=True)  # linear
+            await self.client.write_gatt_char(self.SETTING_REQ_UUID, bytearray([0x03, 0x02, 0x01, 0x04]), response=True)  # 2.7K
+            await self.client.write_gatt_char(self.SETTING_REQ_UUID, bytearray([0x03, 0x79, 0x01, 0x04]), response=True)  # linear
             await self.event.wait()  # Wait to receive the notification response
         else:
             logger.info("Camera is now recording")
@@ -257,17 +255,17 @@ class GoPro():
         else:
             logger.info("Camera is now recording")
 
-    async def keep_alive(self):
+    async def keep_alive_once(self):
         """
         发送保持活跃的命令
         :param client: 相机连接
         """
         assert self.client is not None, 'connect first.'
-        while True:
-            self.event.clear()
-            await self.client.write_gatt_char(self.SETTING_REQ_UUID, bytearray([0x03, 0x5b, 0x01, 0x42]), response=True)
-            await self.event.wait()
-            await asyncio.sleep(3)
+
+        self.event.clear()
+        await self.client.write_gatt_char(self.SETTING_REQ_UUID, bytearray([0x03, 0x5b, 0x01, 0x42]), response=True)
+        await self.event.wait()
+        return
 
 
 async def try_connect_camera_once(id:str, List_Camera_Connected:List[GoPro]):

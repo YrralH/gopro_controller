@@ -15,7 +15,7 @@ from lib_go_pro.logger import GOPRO_BASE_UUID, logger
 
 from lib_go_pro.go_pro_ble import GoPro, try_connect_camera_once
 from lib_go_pro.batch_options import batch_start_record, batch_stop_record, print_activate_camera_id, batch_set_60FPS, \
-    batch_set_120FPS, batch_set_240FPS, batch_set_1080P, batch_set_2p7K, batch_set_4K, batch_sleep
+    batch_set_120FPS, batch_set_240FPS, batch_set_1080P, batch_set_2p7K, batch_set_4K, batch_keep_alive_once, batch_sleep
 
 from typing import List, Dict, Tuple
 
@@ -82,5 +82,6 @@ async def multi_controller(List_Camera_ID: List[int] = LIST_CAMERA_ID_AND_VERSIO
 
     # 保持连接的循环
     while True:
+        asyncio.run_coroutine_threadsafe(batch_keep_alive_once(List_Camera_Connected), loop)
         await print_activate_camera_id(List_Camera_Connected)
         await asyncio.sleep(5)  # 每秒钟检查一次

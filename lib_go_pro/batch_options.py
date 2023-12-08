@@ -82,11 +82,20 @@ async def batch_set_2p7K(List_Camera_Connected:List[GoPro]):
     await asyncio.gather(list_task)
 
 
+async def batch_keep_alive_once(List_Camera_Connected:List[GoPro]):
+    print('batch_keep_alive_once')
+    list_task = []
+    for camera in List_Camera_Connected:
+        list_task.append(asyncio.create_task(camera.keep_alive_once()))
+    await asyncio.gather(list_task)
+
+
 async def batch_sleep(List_Camera_Connected:List[GoPro]):
     list_task = []
     for camera in List_Camera_Connected:
         list_task.append(asyncio.create_task(camera.sleep()))
     await asyncio.gather(list_task)
+
 
 
 async def print_activate_camera_id(List_Camera_Connected:List[GoPro]):
