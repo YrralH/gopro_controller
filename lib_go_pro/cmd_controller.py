@@ -20,16 +20,16 @@ from lib_go_pro.batch_options import batch_start_record, batch_stop_record, prin
 from typing import List, Dict, Tuple
 
 LIST_CAMERA_ID_AND_VERSION_9 = [
-        '7222-12', #0
-        '4406-12', #1
-        '2789-12', #2 
-        '3485-11', #3
-        '2903-11', #4
-        '0500-11', #5
-        '0447-12', #6
-        '5610-12', #7
-        '0777-12'  #8
-    ]
+    '7222-12', #0
+    '4406-12', #1
+    '2789-12', #2 
+    '3485-11', #3
+    '2903-11', #4
+    '0500-11', #5
+    '0447-12', #6
+    '5610-12', #7
+    '0777-12'  #8
+]
 
 
 async def multi_controller(List_Camera_ID: List[int] = LIST_CAMERA_ID_AND_VERSION_9):
